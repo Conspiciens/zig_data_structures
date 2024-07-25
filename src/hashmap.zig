@@ -17,7 +17,7 @@ const Elem = struct {
 };
 
 //structure of the hashmap
-const Map = struct {
+const HashMap = struct {
     capacity: usize,    //max num of elements for map
     pub var val: std.ArrayList(Elem) = undefined; //list to store elements
     pub var map_s: usize = 0; //counter for the number of elements in the map
@@ -33,7 +33,7 @@ const Map = struct {
     }
 
     //function to insert a key-value pair into the map
-    pub fn insert(self: Map, key: [*:0]const u8, value: u32) !void {
+    pub fn insert(self: HashMap, key: [*:0]const u8, value: u32) !void {
         //check if the map is full
         if (map_s >= self.capacity) return InsertError.MapFull;
 
@@ -60,7 +60,7 @@ const Map = struct {
     }
 
     //function to get value for a given key
-    pub fn get(self: Map, key: [*:0]const u8) !u32 {
+    pub fn get(self: HashMap, key: [*:0]const u8) !u32 {
         for (0..self.capacity) |i| {
             if (val.items[i].key == key) return val.items[i].value;
         }
@@ -68,7 +68,7 @@ const Map = struct {
     }
 
     //function for the map
-    pub fn init() !Map {
+    pub fn init() !HashMap {
         const allocator = std.heap.page_allocator;
 
         
@@ -79,12 +79,12 @@ const Map = struct {
 
         //allocate memory for 50 elements and return a new map with that capacity
         val.items = try val.addManyAsArray(50);
-        return Map{.capacity = 50};
+        return HashMap{.capacity = 50};
     }
 };
 
 pub fn main() !void {
-    var map: Map = try Map.init();
+    var map: HashMap = try HashMap.init();
     
     
     try map.insert("key1", 100);
