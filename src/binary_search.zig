@@ -24,7 +24,7 @@ const binary_search = struct {
             }
         }
 
-        if (self.end > 0 and self.array[self.left - 1] == value)
+        if (self.end > 0 and self.array[self.end - 1] == value)
             return true; 
         return false; 
     }
