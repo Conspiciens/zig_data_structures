@@ -18,13 +18,13 @@ pub const Stack = struct {
     }
 
     pub fn is_empty(self: *Stack) bool {
-        if (self.memory.len == 0)
+        if (self.memory.len <= 0)
             return true; 
         return false; 
     }
 
     pub fn is_full(self: *Stack) bool {
-        if (self.memory.len == self.total_stack)
+        if (self.memory.len >= self.total_stack)
             return true; 
         return false;
     }
