@@ -1,9 +1,13 @@
 const std = @import("std");
 const stack = @import("stack.zig").Stack;
+const binary_search = @import("binary_search.zig").binary_search;
 
 pub fn main() !void {
-    stack.stack_init(10);
-    stack.add_item(1);
+    var stack_test: [100]u8 = undefined; 
+    stack_test[0] = 10;
+
+    var stack1 = stack.init(&stack_test, 100);
+    stack1.add_item(1);
 }
 
 test "simple test" {
