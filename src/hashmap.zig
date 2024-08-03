@@ -81,6 +81,11 @@ const HashMap = struct {
         val.items = try val.addManyAsArray(50);
         return HashMap{.capacity = 50};
     }
+
+    pub fn deinit(self: *HashMap) void {
+    self.val.deinit(); //manually free the ArrayList memory
+    }
+
 };
 
 pub fn main() !void {
