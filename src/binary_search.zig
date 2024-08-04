@@ -1,31 +1,25 @@
 const std = @import("std");
 
-const binary_search = struct {
-    array: []u8 = undefined, 
-    start: u8, 
-    end: u8,
-    
-    pub fn init(user_array: []u8, start: u8, end: u8) binary_search {
-        return binary_search {
-            .user_array = user_array, 
-            .start = start, 
-            .end = end,
-        };
-    }
+pub const binary_search = struct {
 
-    pub fn search(self: *binary_search, value: u8) bool {
-        while (self.start < self.end) {
-            const middle = (self.start + self.end) / 2;
+    pub fn search(array: []u8, start: u8, end: u8, value: u8) bool {
+        var low: u8 = start; 
+        var high: u8 = end; 
+
+        while (low <= high){
+            const middle: u8 = low + (low + high) / 2;
+
+            if (array[middle] == value)
+                return true; 
             
-            if (self.array[middle] <= self.end) {
-                self.end = middle + 1;         
+            if (array[middle] < value){
+                low = middle + 1; 
             } else {
-                self.start = middle - 1;
-            }
+                high = middle - 1;    
+            } 
         }
 
-        if (self.end > 0 and self.array[self.end - 1] == value)
-            return true; 
-        return false; 
+        return false;
     }
+        
 };

@@ -5,7 +5,7 @@ const Node = struct {
     next: ?*Node,
 };
 
-const LinkedList = struct {
+pub const LinkedList = struct {
     head: ?*Node, //pointer
 
     //initialize empty list

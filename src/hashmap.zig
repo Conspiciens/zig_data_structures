@@ -17,7 +17,7 @@ const Elem = struct {
 };
 
 //structure of the hashmap
-const HashMap = struct {
+pub const HashMap = struct {
     capacity: usize,    //max num of elements for map
     pub var val: std.ArrayList(Elem) = undefined; //list to store elements
     pub var map_s: usize = 0; //counter for the number of elements in the map
@@ -88,21 +88,5 @@ const HashMap = struct {
 
 };
 
-pub fn main() !void {
-    var map: HashMap = try HashMap.init();
-    
-    
-    try map.insert("key1", 100);
-    try map.insert("key2", 200);
-    try map.insert("key3", 300);
-    
-    const value1: u32 = try map.get("key1");
-    const value2: u32 = try map.get("key2");
-    const value3: u32 = try map.get("key3");
-
-    std.debug.print("Value for 'key1': {d}\n", .{value1});
-    std.debug.print("Value for 'key2': {d}\n", .{value2});
-    std.debug.print("Value for 'key3': {d}\n", .{value3});
-}
 
 

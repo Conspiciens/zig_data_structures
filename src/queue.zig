@@ -5,7 +5,7 @@ const Node = struct {
     next: ?*Node,
 };
 
-const Queue = struct {
+pub const Queue = struct {
     head: ?*Node, //point to first node
     tail: ?*Node, //last node
 
